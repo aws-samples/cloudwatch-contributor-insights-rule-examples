@@ -1,11 +1,7 @@
-## My Project
+## Cloudwatch Contributor Insights Rule Examples
 
-TODO: Fill this README out!
+This Repo contains sample CloudWatch Contributor Insight Rules for different AWS Services. 
 
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
 
 ## Security
 
