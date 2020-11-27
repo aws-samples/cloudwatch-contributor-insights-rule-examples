@@ -1,0 +1,33 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "AggregateOn": "Count",
+    "Contribution": {
+        "Filters": [
+            {
+                "Match": "action",
+                "StartsWith": [
+                    "ACCEPT"
+                ]
+            }
+        ],
+        "Keys": [
+            "dstport",
+            "subnet-id"
+        ]
+    },
+    "LogFormat": "CLF",
+    "LogGroupNames": [
+        "/vpc/flowlogs/*"
+    ],
+    "Fields": {
+        "2": "account-id",
+        "3": "interface-id",
+        "7": "dstport",
+        "13": "action",
+        "22": "subnet-id",
+        "25": "vpc-id"
+    }
+}

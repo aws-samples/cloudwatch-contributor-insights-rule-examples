@@ -1,0 +1,20 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "AggregateOn": "Count",
+    "Contribution": {
+        "Filters": [],
+        "Keys": [
+            "tcp-flag"
+        ]
+    },
+    "LogFormat": "CLF",
+    "LogGroupNames": [
+        "/vpc/flowlogs/*"
+    ],
+    "Fields": {
+        "23": "tcp-flag"
+    }
+}

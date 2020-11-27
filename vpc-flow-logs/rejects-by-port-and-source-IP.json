@@ -1,0 +1,30 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "LogGroupNames": [
+        "/vpc/flowlogs/*"
+    ],
+    "LogFormat": "CLF",
+    "Fields": {
+        "4": "srcaddr",
+        "7": "dstport",
+        "13": "action"
+    },
+    "Contribution": {
+        "Keys": [
+            "dstport",
+            "srcaddr"
+        ],
+        "Filters": [
+            {
+                "Match": "action",
+                "In": [
+                    "REJECT"
+                ]
+            }
+        ]
+    },
+    "AggregateOn": "Count"
+}

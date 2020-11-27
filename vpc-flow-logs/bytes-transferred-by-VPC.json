@@ -1,0 +1,26 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "AggregateOn": "Sum",
+    "Contribution": {
+        "Filters": [],
+        "Keys": [
+            "vpc-id"
+        ],
+        "ValueOf": "bytes"
+    },
+    "LogFormat": "CLF",
+    "LogGroupNames": [
+        "/vpc/flowlogs/*"
+    ],
+    "Fields": {
+        "2": "account-id",
+        "3": "interface-id",
+        "10": "bytes",
+        "13": "action",
+        "22": "subnet-id",
+        "25": "vpc-id"
+    }
+}

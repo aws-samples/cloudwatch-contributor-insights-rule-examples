@@ -1,0 +1,38 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "AggregateOn": "Count",
+    "Contribution": {
+        "Filters": [
+            {
+                "Match": "protocol",
+                "EqualTo": 6
+            },
+            {
+                "Match": "tcp-flag",
+                "StartsWith": [
+                    "2",
+                    "3",
+                    "19"
+                ]
+            }
+        ],
+        "Keys": [
+            "srcaddr"
+        ]
+    },
+    "LogFormat": "CLF",
+    "LogGroupNames": [
+        "/vpc/flowlogs/*"
+    ],
+    "Fields": {
+        "4": "srcaddr",
+        "5": "dstaddr",
+        "7": "dstport",
+        "8": "protocol",
+        "13": "action",
+        "23": "tcp-flag"
+    }
+}
