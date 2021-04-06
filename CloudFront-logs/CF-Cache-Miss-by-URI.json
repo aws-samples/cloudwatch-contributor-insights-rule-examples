@@ -1,0 +1,67 @@
+{
+    "Schema": {
+        "Name": "CloudWatchLogRule",
+        "Version": 1
+    },
+    "AggregateOn": "Count",
+    "Contribution": {
+        "Filters": [
+            {
+                "Match": "Edge Result Type",
+                "In": [
+                    "Miss"
+                ]
+            },
+            {
+                "In": [
+                    "GET",
+                    "HEAD"
+                ],
+                "Match": "HTTP Method"
+            }
+        ],
+        "Keys": [
+            "URI Path"
+        ],
+        "ValueOf": "Bytes Out"
+    },
+    "LogFormat": "CLF",
+    "LogGroupNames": [
+        "${CloudWatchLogGroup}"
+    ],
+    "Fields": {
+        "1": "Date",
+        "2": "Time",
+        "3": "Edge Location",
+        "4": "Bytes Out",
+        "5": "Viewer IP",
+        "6": "HTTP Method",
+        "7": "Host",
+        "8": "URI Path",
+        "9": "HTTP Status",
+        "10": "Referer",
+        "11": "User-Agent",
+        "12": "Query String",
+        "13": "Cookie",
+        "14": "Edge Result Type",
+        "15": "Edge Request ID",
+        "16": "Host Header",
+        "17": "Viewer Protocol",
+        "18": "Bytes In",
+        "19": "Time Taken",
+        "20": "x-forwarded-for",
+        "21": "SSL Protocol",
+        "22": "SSL Cipher",
+        "23": "Edge Response Result Type",
+        "24": "Protocol Version",
+        "25": "FLE  Status",
+        "26": "FLW Encrypted Fields",
+        "27": "Viewer Port",
+        "28": "Time to First Byte",
+        "29": "x-edge-detailed-result-type",
+        "30": "Content Type",
+        "31": "content Length",
+        "32": "Start Range",
+        "33": "End Range"
+    }
+}
