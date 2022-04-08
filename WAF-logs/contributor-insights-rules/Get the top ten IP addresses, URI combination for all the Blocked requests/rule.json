@@ -1,0 +1,25 @@
+{
+  "Schema": {
+    "Name": "CloudWatchLogRule",
+    "Version": 1
+  },
+  "AggregateOn": "Count",
+  "Contribution": {
+    "Filters": [
+      {
+        "Match": "$.action",
+        "In": [
+          "BLOCK"
+        ]
+      }
+    ],
+    "Keys": [
+      "$.httpRequest.clientIp",
+      "$.httpRequest.uri"
+    ]
+  },
+  "LogFormat": "JSON",
+  "LogGroupNames": [
+    "aws-waf-logs-test"
+  ]
+}

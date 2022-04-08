@@ -1,0 +1,57 @@
+# Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License").
+# You may not use this file except in compliance with the License.
+# A copy of the License is located at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# or in the "license" file accompanying this file. This file is distributed
+# on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+# express or implied. See the License for the specific language governing
+# permissions and limitations under the License.
+
+#Following CloudFormation template has samples of enabling WAF logs and send to CloudWatch
+
+
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  This automation provisions AWS Firewall Manager. Following Cloudformation template has samples of creating Firewall
+
+Parameters:
+  WebACLArn:
+    Type: String
+    Description: "ARN of the Web ACL"
+
+  LogGroupPrefix:
+    Type: String
+    Default: "test"
+    Description: "Prefix for the Cloudwatch log group. The template will append aws-waf-logs-${LogGroupPrefix} to match with WAF log format"
+
+  LogRetentionDays:
+    Type: String
+    Default: 7
+    Description: "Log retention period in days"
+
+Resources:
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub aws-waf-logs-${LogGroupPrefix}
+      RetentionInDays: !Ref LogRetentionDays
+
+  LoggingConfiguration:
+    Type: AWS::WAFv2::LoggingConfiguration
+    Properties:
+      ResourceArn: !Ref WebACLArn
+      LogDestinationConfigs:
+        - !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:aws-waf-logs-${LogGroupPrefix}"
+    DependsOn:
+      - LogGroup
+
+Outputs:
+  CloudWatchLogGroupArn:
+    Description: Arn of the Cloudwatch Log group
+    Value: !Sub "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:aws-waf-logs-${LogGroupPrefix}"
+    Export:
+      Name: !Sub "${AWS::StackName}-LogGroup"
