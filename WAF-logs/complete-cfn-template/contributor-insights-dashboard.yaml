@@ -106,7 +106,7 @@ Resources:
               "aws-waf-logs-test"
           ]
         }
-      RuleName: ContributorInsightTop10IPURIforBlockedRequests
+      RuleName: Top10IPURIforBlockedRequests
       RuleState: ENABLED
 
   ContributorInsightTop10RulesWithonRuleGroup1:
@@ -131,7 +131,7 @@ Resources:
               "aws-waf-logs-test"
           ]
         }
-      RuleName: ContributorInsightTop10RulesWithonRuleGroup1
+      RuleName: Top10RulesWithonRuleGroup1
       RuleState: ENABLED
 
   ContributorInsightTop10RulesWithonRuleGroup2:
@@ -156,5 +156,5 @@ Resources:
               "aws-waf-logs-test"
           ]
         }
-      RuleName: ContributorInsightTop10RulesWithonRuleGroup2
+      RuleName: Top10RulesWithonRuleGroup2
       RuleState: ENABLED
