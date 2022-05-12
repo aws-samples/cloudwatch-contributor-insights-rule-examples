@@ -25,7 +25,7 @@ Resources:
   ContributorInsightTop10TerminatingRules:
     Type: AWS::CloudWatch::InsightRule
     Properties:
-      RuleBody: |
+      RuleBody: !Sub |
         {
           "AggregateOn": "Count",
           "Contribution": {
@@ -36,7 +36,7 @@ Resources:
           },
           "LogFormat": "JSON",
           "LogGroupNames": [
-              "aws-waf-logs-test"
+              "${LogGroupName}"
           ],
           "Schema": {
             "Name": "CloudWatchLogRule",
@@ -49,7 +49,7 @@ Resources:
   ContributorInsightTop10IPbyRateBasedRules:
     Type: AWS::CloudWatch::InsightRule
     Properties:
-      RuleBody: |
+      RuleBody: !Sub |
         {
           "Schema": {
             "Name": "CloudWatchLogRule",
@@ -71,7 +71,7 @@ Resources:
           },
           "LogFormat": "JSON",
           "LogGroupNames": [
-              "aws-waf-logs-test"
+              "${LogGroupName}"
           ]
         }
       RuleName: Top10IPsBlockedbyRateBasedRules
@@ -80,7 +80,7 @@ Resources:
   ContributorInsightTop10IPURIforBlockedRequests:
     Type: AWS::CloudWatch::InsightRule
     Properties:
-      RuleBody: |
+      RuleBody: !Sub |
         {
           "Schema": {
             "Name": "CloudWatchLogRule",
@@ -103,16 +103,16 @@ Resources:
           },
           "LogFormat": "JSON",
           "LogGroupNames": [
-              "aws-waf-logs-test"
+              "${LogGroupName}"
           ]
         }
-      RuleName: ContributorInsightTop10IPURIforBlockedRequests
+      RuleName: Top10IPURIforBlockedRequests
       RuleState: ENABLED
 
   ContributorInsightTop10RulesWithonRuleGroup1:
     Type: AWS::CloudWatch::InsightRule
     Properties:
-      RuleBody: |
+      RuleBody: !Sub |
         {
           "Schema": {
             "Name": "CloudWatchLogRule",
@@ -128,16 +128,16 @@ Resources:
           },
           "LogFormat": "JSON",
           "LogGroupNames": [
-              "aws-waf-logs-test"
+              "${LogGroupName}"
           ]
         }
-      RuleName: ContributorInsightTop10RulesWithonRuleGroup1
+      RuleName: Top10RulesWithonRuleGroup1
       RuleState: ENABLED
 
   ContributorInsightTop10RulesWithonRuleGroup2:
     Type: AWS::CloudWatch::InsightRule
     Properties:
-      RuleBody: |
+      RuleBody: !Sub |
         {
           "Schema": {
             "Name": "CloudWatchLogRule",
@@ -153,8 +153,8 @@ Resources:
           },
           "LogFormat": "JSON",
           "LogGroupNames": [
-              "aws-waf-logs-test"
+              "${LogGroupName}"
           ]
         }
-      RuleName: ContributorInsightTop10RulesWithonRuleGroup2
+      RuleName: Top10RulesWithonRuleGroup2
       RuleState: ENABLED

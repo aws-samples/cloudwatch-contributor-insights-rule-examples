@@ -16,7 +16,7 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  This automation provisions AWS Firewall Manager. Following Cloudformation template has samples of creating Firewall
+  This automation provisions a Cloudwatch log group and assocaite it with a WebACL you provide
 
 Parameters:
   WebACLArn:
@@ -33,10 +33,15 @@ Parameters:
     Default: 7
     Description: "Log retention period in days"
 
+  KMSKeyArn:
+    Type: String
+    Description: "Arn of the KMS key to encrypt the log group"
+
 Resources:
   LogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
+      KmsKeyId: !Ref KMSKeyArn
       LogGroupName: !Sub aws-waf-logs-${LogGroupPrefix}
       RetentionInDays: !Ref LogRetentionDays
 
