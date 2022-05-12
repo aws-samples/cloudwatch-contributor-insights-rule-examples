@@ -19,7 +19,7 @@ However, we can write a rule for a specific element in the array. Since the orde
 To do that you will need to monitor
 $.ruleGroupList[1].terminatingRule.ruleId"
 
-In addition I’ve used $.ruleGroupList[1].terminatingRule.action" which indicates whether the traffic is Blocked or Counted by the particular rule.i
+In addition I’ve used $.ruleGroupList[1].terminatingRule.action" which indicates whether the traffic is Blocked or Counted by the particular rule.
 
 **Top10RateBasedRules**:
 
