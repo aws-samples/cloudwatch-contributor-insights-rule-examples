@@ -16,7 +16,7 @@
 
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  This automation provisions AWS Firewall Manager. Following Cloudformation template has samples of creating Firewall
+  This automation provisions a Cloudwatch log group and assocaite it with a WebACL you provide
 
 Parameters:
   WebACLArn:
